@@ -1,0 +1,14 @@
+Для написания запроса по Вопросу №2 были использованы следующие структуры таблиц:
+
+CREATE TABLE Products (id int, name varchar(255), PRIMARY KEY (id));
+CREATE TABLE Categories (id int, name varchar(255), PRIMARY KEY (id));
+CREATE TABLE ProductCategory (id int, id_product int, id_category int, PRIMARY KEY (id));
+
+Запрос для выбора всех пар "Имя продукта-Имя категории":
+
+SELECT p.name, c.name
+FROM Products p
+LEFT JOIN ProductCategory pc ON p.id=pc.id_product
+LEFT JOIN Categories c ON pc.id_category=c.id;
+
+Если продукт не имеет категории, его наименование все равно выводится.
